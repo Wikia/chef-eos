@@ -54,8 +54,8 @@ def load_current_resource
   @current_resource.exists = false
   
   if resource_exists?
-    vlans = eval run_command("netdev vlan list --output ruby-hash")
-    vlan = vlans[@current_resource.vlan_id]
+    resp = eval run_command("netdev vlan list --output ruby-hash")
+    vlan = resp['result'][@current_resource.vlan_id]
     @current_resource.vlan_id(vlan['vlan_id'])
     @current_resource.exists = true
 

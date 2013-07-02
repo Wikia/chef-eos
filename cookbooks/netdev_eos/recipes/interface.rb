@@ -1,6 +1,6 @@
 #
-# Chef Cookbook   : netdev_eos
-# Recipe          : interface
+# Chef Cookbook   : eos
+# File            : recipe/default.rb
 #    
 # Copyright 2013 Arista Networks
 # 

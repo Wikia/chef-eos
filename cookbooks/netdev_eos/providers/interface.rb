@@ -49,8 +49,8 @@ end
 def load_current_resource
   Chef::Log.info "Loading current resource #{@new_resource.name}"
   
-  interfaces = eval run_command("netdev interface list --output ruby-hash")
-  interface = interfaces[@new_resource.name]
+  resp = eval run_command("netdev interface list --output ruby-hash")
+  interface = resp['result'][@new_resource.name]
   
   @current_resource = Chef::Resource::NetdevInterface.new(@new_resource.name)
   @current_resource.admin(interface['admin'])

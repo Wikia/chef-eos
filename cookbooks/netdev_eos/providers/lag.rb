@@ -52,8 +52,8 @@ def load_current_resource
   @current_resource.exists = false
   
   if resource_exists?
-    lags = eval run_command("netdev lag list --output ruby-hash")
-    lag = lags[@new_resource.name]
+    resp = eval run_command("netdev lag list --output ruby-hash")
+    lag = resp['result'][@new_resource.name]
     @current_resource.links(lag['links'])
     @current_resource.minimum_links(lag['minimum_links'])
     @current_resource.lacp(lag['lacp'])
@@ -89,10 +89,9 @@ end
 
 def edit_lag
   params = Array.new()
-  (params << "--description" << new_resource.description) if has_changed?(current_resource.description, new_resource.description)
-  (params << "--untagged_vlan" << new_resource.untagged_vlan) if has_changed?(current_resource.untagged_vlan, new_resource.untagged_vlan)
-  (params << "--tagged_vlans" << new_resource.tagged_vlans) if has_changed?(current_resource.tagged_vlans, new_resource.tagged_vlans)
-  (params << "--vlan_tagging" << new_resource.vlan_tagging) if has_changed?(current_resource.vlan_tagging, new_resource.vlan_tagging)
+  (params << "--links" << new_resource.links.join(',')) if has_changed?(current_resource.links, new_resource.links)
+  (params << "--minimum_links" << new_resource.minimum_links) if has_changed?(current_resource.minimum_links, new_resource.minimum_links)
+  (params << "--lacp" << new_resource.lacp) if has_changed(current_resource.lacp, new_resource.lacp)
   if !params.empty?
     execute "netdev lag edit" do
       command "netdev lag edit #{new_resource.name} #{params.join(' ')}"

@@ -53,8 +53,8 @@ def load_current_resource
   @current_resource.exists = false
   
   if resource_exists?
-    interfaces = eval run_command("netdev l2interface list --output ruby-hash")
-    interface = interfaces[@new_resource.name]
+    resp = eval run_command("netdev l2interface list --output ruby-hash")
+    interface = resp['result'][@new_resource.name]
     @current_resource.description(interface['description'])
     @current_resource.untagged_vlan(interface['untagged_vlan'])
     @current_resource.tagged_vlans(interface['tagged_vlans'])

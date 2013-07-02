@@ -1,4 +1,4 @@
-# NetdevOps EOS Cookbook
+# netdev_eos Cookbook
 
 ## Overview
 The cookbooks found here are an implementation of the lightweight resource providers found in the [NetdevOps cookbooks](https://github.com/NetdevOps/chef-netdev-stdlib).  The implementation provides an abstraction for managing network resources.   These cookbooks provide a set of recipes and providers to implementing them on EOS based network elements.
