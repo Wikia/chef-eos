@@ -1,0 +1,93 @@
+{
+  "groupings": {
+  },
+  "providing": {
+  },
+  "conflicting": {
+  },
+  "dependencies": {
+  },
+  "license": "Apache v2.0",
+  "maintainer": "Arista Networks",
+  "description": "Implements an recipes for managing network resources on EOS devices",
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "version": "0.1.0",
+  "recipes": {
+    "lag": "Manages lag (port-channel) resources on EOS based devices",
+    "interface": "Manages physical interface resources on EOS based devices",
+    "vlan": "Manages vlan resources on EOS based devices",
+    "l2_interface": "Manages switchport resources on EOS based devices"
+  },
+  "name": "eos",
+  "replacing": {
+  },
+  "recommendations": {
+  },
+  "attributes": {
+    "eos/config/databag": {
+      "type": "string",
+      "display_name": "Data bag name",
+      "description": "The name of the data bag to use for finding settings",
+      "calculated": false,
+      "receipes": [
+        "interface",
+        "switchport",
+        "vlan",
+        "portchannel"
+      ],
+      "required": "required",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "default": "eos_config"
+    },
+    "eos/config/identifier": {
+      "type": "string",
+      "display_name": "Identifier",
+      "description": "The unique node identifier to use to local the data bag item",
+      "calculated": false,
+      "receipes": [
+        "interface",
+        "switchport",
+        "vlan",
+        "portchannel"
+      ],
+      "required": "required",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "default": "hostname"
+    },
+    "eos/config/provider": {
+      "type": "string",
+      "display_name": "Config provider",
+      "description": "The name of the provider for the EOS configuration",
+      "calculated": false,
+      "receipes": [
+        "interface",
+        "switchport",
+        "vlan",
+        "portchannel"
+      ],
+      "required": "required",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "default": "databag"
+    }
+  },
+  "maintainer_email": "sprygada@aristanetworks.com",
+  "long_description": "# Arista EOS Cookbook\n\n## Overview\nThe eos cookbook provides a set of recipes, resources and providers for managing network resources on Arista EOS devices.   \n\n\n## Recipes\nBelow is a list of the cookbooks provided with a quick summary of each.  Please see the README for each cookbook for any notes specific to usage.\n\n<dl>\n<dt>interface</dt> \n<dd>This cookbook provides management of physical interfaces in EOS</dd>\n\n<dt>switchport</dt>\n<dd>This cookbook provides the management of switchport resources in EOS</dd>\n\n<dt>portchannel</dt>\n<dd>This cookbook provides  management (create, delete) of port-channel interfaces in EOS</dd>\n\n<dt>vlan</dt>\n<dd>This cookbook provides management of vlan resources in EOS</dd>\n</dl>\n\n## Dependencies\n  * Chef 10 or later\n  * Netdev EOS extension\n\n## Contributors\n  * Peter Sprygada, Arista Networks\n\n## License\nChApache 2.0, See LICENSE file"
+}
