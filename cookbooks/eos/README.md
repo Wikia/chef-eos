@@ -29,4 +29,4 @@ Below is a list of the cookbooks provided with a quick summary of each.  Please 
   * Peter Sprygada, Arista Networks
 
 ## License
-ChApache 2.0, See LICENSE file
+Apache 2.0, See LICENSE file
