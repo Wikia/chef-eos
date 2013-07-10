@@ -1,6 +1,6 @@
 #
 # Chef Cookbook   : eos
-# File            : templates/defaults/eos.rb
+# File            : files/defaults/eos.rb
 #    
 # Copyright 2013 Arista Networks
 # 
