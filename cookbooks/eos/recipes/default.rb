@@ -16,17 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ohai "reload_eos" do
-  action :nothing
+ohai "load_eos" do
+  action :reload
   plugin "eos"
 end
-
-template "#{node['ohai']['plugin_path']}/eos.rb" do
-  source "eos.rb.erb"
-  owner "root"
-  group "root"
-  mode 00755
-  notifies :reload, 'ohai[reload_eos]', :immediately
-end
-
-include_recipe "ohai"

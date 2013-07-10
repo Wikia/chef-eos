@@ -19,3 +19,5 @@
 default[:eos][:config][:identifier] = "hostname"
 default[:eos][:config][:databag] = "eos_config"
 default[:eos][:config][:provider] = "databag"
+
+default[:ohai][:plugins] = "eos"
