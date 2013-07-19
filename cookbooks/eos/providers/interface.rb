@@ -29,6 +29,7 @@ action :manage do
     
     if !params.empty?
       execute "netdev interface edit" do
+        Chef::Log.debug "Command: netdev interface edit #{new_resource.name} #{params.join(' ')}"
         command "netdev interface edit #{new_resource.name} #{params.join(' ')}"
       end
     else

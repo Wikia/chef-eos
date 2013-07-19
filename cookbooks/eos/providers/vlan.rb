@@ -39,6 +39,7 @@ action :remove do
   if @current_resource.exists
     converge_by("remove vlan #{@current_resource.name}") do
       execute "netdev vlan delete" do
+        Chef::Log.debug "Command: netdev vlan delete #{new_resource.vlan_id}"
         command "netdev vlan delete #{new_resource.vlan_id}"
       end
     end
@@ -84,6 +85,7 @@ def edit_vlan
   (params << "--name" << new_resource.name) if has_changed?(current_resource.name, new_resource.name)
   if !params.empty?
     execute "netdev vlan edit" do
+      Chef::Log.debug "Command: netdev vlan edit #{new_resource.vlan_id} #{params.join(' ')}"
       command "netdev vlan edit #{new_resource.vlan_id} #{params.join(' ')}"
     end
   else

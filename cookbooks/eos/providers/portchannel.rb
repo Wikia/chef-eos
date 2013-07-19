@@ -91,6 +91,7 @@ def edit_lag
   (params << "--lacp" << new_resource.lacp) if has_changed?(current_resource.lacp, new_resource.lacp)
   if !params.empty?
     execute "netdev lag edit" do
+      Chef::Log.debug("netdev lag edit #{new_resource.name} #{params.join(' ')}")
       command "netdev lag edit #{new_resource.name} #{params.join(' ')}"
     end
   end

@@ -16,8 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-default[:eos][:config][:identifier] = "hostname"
-default[:eos][:config][:databag] = "eos_config"
-default[:eos][:config][:provider] = "databag"
+default[:eos][:config][:identifier]   = "hostname"
+default[:eos][:config][:databag]      = "eos_config"
+default[:eos][:config][:provider]     = "databag"
 
-default[:ohai][:plugins] = "eos"
+normal[:ohai][:plugin_path]           = "/persist/local/chef/ohai_plugins"
+normal[:ohai][:plugins][:eos]         = "ohai"

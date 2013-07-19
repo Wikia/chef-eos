@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 config = get_config()
-if config.has_key?('portchannels')
-  config['portchannels'].each do |name, attribs|
+if config.has_key?('portchannel')
+  config['portchannel'].each do |name, attribs|
     Chef::Log.info "Processing port-channel #{name}"
 
     if attribs['state'] == 'absent'

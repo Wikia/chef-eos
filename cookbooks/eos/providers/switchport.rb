@@ -39,6 +39,7 @@ action :remove do
   if @current_resource.exists
     converge_by("remove l2interface #{@current_resource.name}") do
       execute "netdev l2interface delete" do
+        Chef::Log.debug "Command: netdev l2interface delete #{new_resource.name}"
         command "netdev l2interface delete #{new_resource.name}"
       end
     end
@@ -80,6 +81,7 @@ def create_switchport
   (params << "--vlan_tagging" << new_resource.vlan_tagging) if new_resource.vlan_tagging
   if !params.empty?
     execute "netdev l2interface create" do
+      Chef::Log.debug "Command: netdev l2interface create #{new_resource.name} #{params.join(' ')}"
       command "netdev l2interface create #{new_resource.name} #{params.join(' ')}"
     end
   end
@@ -92,7 +94,7 @@ def edit_switchport
   (params << "--vlan_tagging" << new_resource.vlan_tagging) if has_changed?(current_resource.vlan_tagging, new_resource.vlan_tagging)
   if !params.empty?
     execute "netdev l2interface edit" do
-      Chef::Log.debug "Executing netdev l2interface edit #{new_resource.name} #{params.join(' ')}"
+      Chef::Log.debug "Command: netdev l2interface edit #{new_resource.name} #{params.join(' ')}"
       command "netdev l2interface edit #{new_resource.name} #{params.join(' ')}"
     end
   end
