@@ -25,7 +25,7 @@ class Chef
 
         config = data_bag_item(databag, identity)
         return config
-      elsif config_provider == "other":
+      elsif config_provider == "other"
         return nil
       else
         Chef::Log.fatal "Unknown or unsupported config provider"
