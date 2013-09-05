@@ -1,5 +1,8 @@
 # CHANGELOG 
 
+## 0.1.3, 2013-09-04
+* updated provider to use the Devops Extension for EOS
+
 ## 0.1.2, 2013-07-19
 * fixed bug found with portchannel data bag entries
 * added some additional debug messages to aid with troubleshooting

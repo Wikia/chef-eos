@@ -26,11 +26,11 @@ Below is a list of the cookbooks provided with a quick summary of each.  Please 
 
 ## Dependencies
   * Chef 10 or later
-  * Arista EOS 4.10
-  * Netdev EOS extension
+  * Arista EOS 4.12 or later
+  * Devops Extension for EOS
 
 ## Contributors
   * Peter Sprygada, Arista Networks
 
 ## License
-Apache 2.0, See LICENSE file
+BSD-3, See LICENSE file

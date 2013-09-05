@@ -23,4 +23,4 @@ See README file located in the cookbook for dependencies
 * Peter Sprygada, Arista Networks
 
 ## License
-Apache 2.0, See LICENSE file
+BSD-2, See LICENSE file
