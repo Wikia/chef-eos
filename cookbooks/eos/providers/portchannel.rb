@@ -1,24 +1,24 @@
 #
 # Chef Cookbook   : eos
 # File            : provider/portchannel.rb
-#    
+#
 # Copyright (c) 2013, Arista Networks
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
 # are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice, this
 #   list of conditions and the following disclaimer in the documentation and/or
 #   other materials provided with the distribution.
-# 
+#
 #   Neither the name of the {organization} nor the names of its
 #   contributors may be used to endorse or promote products derived from
 #   this software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -65,9 +65,9 @@ def load_current_resource
   Chef::Log.info "Loading current resource #{@new_resource.name}"
   @current_resource = Chef::Resource::EosPortchannel.new(@new_resource.name)
   @current_resource.exists = false
-  
+
   if resource_exists?
-    resp = eval run_command("devops lag list --output ruby-hash")
+    resp = run_command('devops lag list', jsonify=true)
     lag = resp['result'][@new_resource.name]
     @current_resource.links(lag['links'])
     @current_resource.minimum_links(lag['minimum_links'])
@@ -77,12 +77,12 @@ def load_current_resource
   else
     Chef::Log.info "Lag interface #{@new_resource.name} doesn't exist"
   end
-  
+
 end
 
 def resource_exists?
   Chef::Log.info("Looking to see if lag #{@new_resource.name} exists")
-  lags = eval run_command("devops lag list --output ruby-hash")
+  lags = run_command('devops lag list', jsonify=true)
   return lags['result'].has_key?(@new_resource.name)
 end
 
@@ -112,4 +112,4 @@ def edit_lag
   end
 end
 
-  
+
