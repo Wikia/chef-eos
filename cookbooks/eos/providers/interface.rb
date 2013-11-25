@@ -70,7 +70,6 @@ def load_current_resource
     @current_resource = Chef::Resource::EosInterface.new(@new_resource.name)
     @current_resource.admin(interface['admin'])
     @current_resource.description(interface['description'])
-    @current_resource.admin(interface['admin'])
     @current_resource.exists = true
 
   else

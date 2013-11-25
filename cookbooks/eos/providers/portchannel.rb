@@ -90,7 +90,7 @@ end
 def create_lag
   params = Array.new()
   (params << "--links" << new_resource.links.join(',')) if new_resource.links
-  (params << "--minimum_links" << new_resource.minimum_links) if new_resource.minimum_links
+  (params << "--minimum-links" << new_resource.minimum_links) if new_resource.minimum_links
   (params << "--lacp" << new_resource.lacp) if new_resource.lacp
   if !params.empty?
     execute "devops lag create" do
@@ -102,7 +102,7 @@ end
 def edit_lag
   params = Array.new()
   (params << "--links" << new_resource.links.join(',')) if has_changed?(current_resource.links, new_resource.links)
-  (params << "--minimum_links" << new_resource.minimum_links) if has_changed?(current_resource.minimum_links, new_resource.minimum_links)
+  (params << "--minimum-links" << new_resource.minimum_links) if has_changed?(current_resource.minimum_links, new_resource.minimum_links)
   (params << "--lacp" << new_resource.lacp) if has_changed?(current_resource.lacp, new_resource.lacp)
   if !params.empty?
     execute "devops lag edit" do
