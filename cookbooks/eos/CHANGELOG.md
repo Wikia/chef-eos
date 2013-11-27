@@ -1,4 +1,7 @@
-# CHANGELOG 
+# CHANGELOG
+
+## 0.1.4, 2013-11-26
+* updated providers to support new attributes in Devops Extension
 
 ## 0.1.3, 2013-09-04
 * updated provider to use the Devops Extension for EOS
